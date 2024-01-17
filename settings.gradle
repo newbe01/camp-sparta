@@ -2,3 +2,4 @@ rootProject.name = 'sparta'
 
 include 'html-css'
 include 'java-basic'
+include 'spring-prepared'
