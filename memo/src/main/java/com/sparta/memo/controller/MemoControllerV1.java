@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 @RestController
-public class MemoController {
+public class MemoControllerV1 {
 
     private final Map<Long, Memo> memoList = new HashMap<>();
 
