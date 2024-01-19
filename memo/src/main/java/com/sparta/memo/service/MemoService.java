@@ -4,16 +4,28 @@ import com.sparta.memo.dto.MemoRequestDto;
 import com.sparta.memo.dto.MemoResponseDto;
 import com.sparta.memo.entity.Memo;
 import com.sparta.memo.repository.MemoRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//@Component
+@Service
 public class MemoService {
 
     private final MemoRepository memoRepository;
 
-    public MemoService(JdbcTemplate jdbcTemplate) {
-        this.memoRepository = new MemoRepository(jdbcTemplate);
+//    public MemoService(ApplicationContext context) {
+//         get by name
+//        MemoRepository memoRepository = (MemoRepository) context.getBean("memoRepository");
+//         get by class
+//        MemoRepository memoRepository = context.getBean(MemoRepository.class);
+//        this.memoRepository = memoRepository;
+//    }
+
+    public MemoService(MemoRepository memoRepository) {
+        this.memoRepository = memoRepository;
     }
 
     public MemoResponseDto createMemo(MemoRequestDto requestDto) {
