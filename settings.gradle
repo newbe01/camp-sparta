@@ -1,3 +1,5 @@
 rootProject.name = 'sparta'
 
 include 'java-basic'
+include 'jpa-core'
+
