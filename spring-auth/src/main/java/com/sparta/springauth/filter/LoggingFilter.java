@@ -10,7 +10,7 @@ import java.io.IOException;
 
 @Slf4j(topic = "LoggingFilter")
 @Order(1)
-@Component
+//@Component
 public class LoggingFilter implements Filter {
 
     @Override
