@@ -55,23 +55,24 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void login(LoginRequestDto requestDto, HttpServletResponse response) {
-        String username = requestDto.getUsername();
-        String password = requestDto.getPassword();
+//    public void login(LoginRequestDto requestDto, HttpServletResponse response) {
+//        String username = requestDto.getUsername();
+//        String password = requestDto.getPassword();
+//
+//        // user check
+//        User user = userRepository.findByUsername(username).orElseThrow(
+//                () -> new IllegalArgumentException("no user")
+//        );
+//
+//        // pw check
+//        if (!passwordEncoder.matches(password, user.getPassword())) {
+//            throw new IllegalArgumentException("wrong password");
+//        }
+//
+//        // jwt
+//        String token = jwtUtil.createToken(user.getUsername(), user.getRole());
+//        jwtUtil.addJwtToCookie(token, response);
+//
+//    }
 
-        // user check
-        User user = userRepository.findByUsername(username).orElseThrow(
-                () -> new IllegalArgumentException("no user")
-        );
-
-        // pw check
-        if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new IllegalArgumentException("wrong password");
-        }
-
-        // jwt
-        String token = jwtUtil.createToken(user.getUsername(), user.getRole());
-        jwtUtil.addJwtToCookie(token, response);
-
-    }
 }
