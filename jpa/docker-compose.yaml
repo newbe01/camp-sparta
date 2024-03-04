@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  postgres_boot:
+    image: postgres
+    container_name: postgres_boot
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: root
+      POSTGRES_DB: messenger
+    restart: always
