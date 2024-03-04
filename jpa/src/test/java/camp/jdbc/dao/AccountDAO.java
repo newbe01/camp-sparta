@@ -1,11 +1,11 @@
-package jdbc.dao;
+package camp.jdbc.dao;
 
+import camp.jdbc.vo.AccountVO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import jdbc.vo.AccountVO;
 
 public class AccountDAO {
 

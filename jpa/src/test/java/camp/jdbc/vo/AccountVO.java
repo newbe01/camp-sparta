@@ -1,4 +1,4 @@
-package jdbc.vo;
+package camp.jdbc.vo;
 
 public class AccountVO {
 

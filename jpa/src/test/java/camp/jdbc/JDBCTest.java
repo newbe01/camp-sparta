@@ -1,11 +1,11 @@
-package jdbc;
+package camp.jdbc;
 
+import camp.jdbc.dao.AccountDAO;
+import camp.jdbc.vo.AccountVO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import jdbc.dao.AccountDAO;
-import jdbc.vo.AccountVO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
