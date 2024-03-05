@@ -3,6 +3,7 @@ package camp.channel;
 import camp.thread.Thread;
 import camp.user.User;
 import camp.userChannel.UserChannel;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -37,11 +38,11 @@ public class Channel {
     private Type type;
 
     @Builder.Default
-    @OneToMany(mappedBy = "channel")
+    @OneToMany(mappedBy = "channel", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Thread> threads = new LinkedHashSet<>();
 
     @Builder.Default
-    @OneToMany(mappedBy = "channel")
+    @OneToMany(mappedBy = "channel", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UserChannel> userChannels = new LinkedHashSet<>();
 
     public UserChannel joinUser(User user) {

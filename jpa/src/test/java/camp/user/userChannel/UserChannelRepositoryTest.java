@@ -23,8 +23,8 @@ class UserChannelRepositoryTest {
     @Autowired
     ChannelRepository channelRepository;
 
-    @Autowired
-    UserChannelRepository userChannelRepository;
+//    @Autowired
+//    UserChannelRepository userChannelRepository;
 
     @Test
     void userJoinChannelTest() {
@@ -34,7 +34,23 @@ class UserChannelRepositoryTest {
 
         Channel savedChannel = channelRepository.insertChannel(newChannel);
         User savedUser = userRepository.insertUser(newUser);
-        UserChannel savedUc = userChannelRepository.insertUserChannel(newUserChannel);
+//        UserChannel savedUc = userChannelRepository.insertUserChannel(newUserChannel);
+
+        Channel channel = channelRepository.selectChannel(savedChannel.getId());
+        assert channel.getUserChannels().stream()
+            .map(UserChannel::getChannel)
+            .map(Channel::getName)
+            .anyMatch(name -> name.equals(newChannel.getName()));
+    }
+
+    @Test
+    void userJoinChannelWithCascadeTest() {
+        Channel newChannel = Channel.builder().name("new-group").build();
+        User newUser = User.builder().username("new-user").password("new-password").build();
+        newChannel.joinUser(newUser);
+
+        Channel savedChannel = channelRepository.insertChannel(newChannel);
+        User savedUser = userRepository.insertUser(newUser);
 
         Channel channel = channelRepository.selectChannel(savedChannel.getId());
         assert channel.getUserChannels().stream()

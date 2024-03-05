@@ -3,6 +3,7 @@ package camp.user;
 import camp.userChannel.UserChannel;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -45,7 +46,7 @@ public class User {
 //    private Address address;
 
     @Builder.Default
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     Set<UserChannel> userChannels = new LinkedHashSet<>();
 
 }

@@ -38,4 +38,27 @@ class ThreadRepositoryTest {
         Channel result = channelRepository.selectChannel(channel.getId());
         assert result.getThreads().containsAll(Set.of(savedThread, savedThread2));
     }
+
+    @Test
+    void deleteThreadByOrphanRemovalTest() {
+        Channel newChannel = Channel.builder().name("new-group").build();
+        Thread newThread = Thread.builder().message("new-message").build();
+        Thread newThread2 = Thread.builder().message("new-message2").build();
+        newThread.setChannel(newChannel);
+        newThread2.setChannel(newChannel);
+
+        Channel channel = channelRepository.insertChannel(newChannel);
+        Thread savedThread = threadRepository.insertThread(newThread);
+        Thread savedThread2 = threadRepository.insertThread(newThread2);
+
+//        Thread thread = threadRepository.selectThread(savedThread.getId());
+//        assert thread.getChannel().getName().equals(newChannel.getName());
+
+        Channel result = channelRepository.selectChannel(channel.getId());
+        result.getThreads().remove(savedThread);
+
+//        channelRepository.insertChannel(result);
+
+//        assert result.getThreads().containsAll(Set.of(savedThread, savedThread2));
+    }
 }
