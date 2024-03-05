@@ -1,23 +1,14 @@
 package camp.user;
 
-import camp.user.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import camp.tmp.SampleRepository;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class UserRepository {
+//@RepositoryDefinition(domainClass = User.class, idClass = Long.class)
+public interface UserRepository extends SampleRepository<User, Long> {
 
-    @PersistenceContext
-    EntityManager em;
-
-    public User insertUser(User user) {
-        em.persist(user);
-        return user;
-    }
-
-    public User selectUser(Long id) {
-        return em.find(User.class, id);
-    }
+//    public Optional<User> findByUsername(String userName);
 
 }
