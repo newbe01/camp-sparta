@@ -1,6 +1,8 @@
 package camp.channel;
 
 import camp.thread.Thread;
+import camp.user.User;
+import camp.userChannel.UserChannel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -37,6 +39,17 @@ public class Channel {
     @Builder.Default
     @OneToMany(mappedBy = "channel")
     private Set<Thread> threads = new LinkedHashSet<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "channel")
+    private Set<UserChannel> userChannels = new LinkedHashSet<>();
+
+    public UserChannel joinUser(User user) {
+        UserChannel userChannel = UserChannel.builder().user(user).channel(this).build();
+        this.userChannels.add(userChannel);
+        user.getUserChannels().add(userChannel);
+        return userChannel;
+    }
 
     public void addThreads(Thread thread) {
         this.threads.add(thread);
