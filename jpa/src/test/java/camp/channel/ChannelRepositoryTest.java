@@ -20,9 +20,9 @@ class ChannelRepositoryTest {
     void InsertSelectChannelTest() {
         Channel newChannel = Channel.builder().name("new-group").build();
 
-        Channel savedChannel = channelRepository.insertChannel(newChannel);
+        Channel savedChannel = channelRepository.save(newChannel);
 
-        Channel channel = channelRepository.selectChannel(savedChannel.getId());
+        Channel channel = channelRepository.findById(savedChannel.getId()).get();
         assert channel.getId().equals(savedChannel.getId());
     }
 }

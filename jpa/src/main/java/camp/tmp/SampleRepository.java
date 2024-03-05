@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.data.repository.Repository;
 
-public interface SampleRepository<User, ID extends Serializable> extends Repository<User, ID> {
+public interface SampleRepository<User, ID extends Serializable> extends Repository<camp.user.User, ID> {
 
-    User save (User entity);
+    camp.user.User save (camp.user.User entity);
 
-    Optional<User> findByUsername(String username);
+    Optional<camp.user.User> findByUsername(String username);
 
 }

@@ -28,14 +28,14 @@ class ThreadRepositoryTest {
         newThread.setChannel(newChannel);
         newThread2.setChannel(newChannel);
 
-        Channel channel = channelRepository.insertChannel(newChannel);
-        Thread savedThread = threadRepository.insertThread(newThread);
-        Thread savedThread2 = threadRepository.insertThread(newThread2);
+        Channel channel = channelRepository.save(newChannel);
+        Thread savedThread = threadRepository.save(newThread);
+        Thread savedThread2 = threadRepository.save(newThread2);
 
-        Thread thread = threadRepository.selectThread(savedThread.getId());
+        Thread thread = threadRepository.findById(savedThread.getId()).get();
         assert thread.getChannel().getName().equals(newChannel.getName());
 
-        Channel result = channelRepository.selectChannel(channel.getId());
+        Channel result = channelRepository.findById(channel.getId()).get();
         assert result.getThreads().containsAll(Set.of(savedThread, savedThread2));
     }
 
@@ -47,14 +47,14 @@ class ThreadRepositoryTest {
         newThread.setChannel(newChannel);
         newThread2.setChannel(newChannel);
 
-        Channel channel = channelRepository.insertChannel(newChannel);
-        Thread savedThread = threadRepository.insertThread(newThread);
-        Thread savedThread2 = threadRepository.insertThread(newThread2);
+        Channel channel = channelRepository.save(newChannel);
+        Thread savedThread = threadRepository.save(newThread);
+        Thread savedThread2 = threadRepository.save(newThread2);
 
 //        Thread thread = threadRepository.selectThread(savedThread.getId());
 //        assert thread.getChannel().getName().equals(newChannel.getName());
 
-        Channel result = channelRepository.selectChannel(channel.getId());
+        Channel result = channelRepository.findById(channel.getId()).get();
         result.getThreads().remove(savedThread);
 
 //        channelRepository.insertChannel(result);
