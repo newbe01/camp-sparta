@@ -1,5 +1,6 @@
 package com.sparta.jpa2.common;
 
+import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class PageDTO {
     private String sortBy;
 
     public Pageable toPageable() {
+        if(Objects.isNull(sortBy)) return PageRequest.of(currentPage - 1, size);
         return PageRequest.of(currentPage - 1, size, Sort.by(sortBy).descending());
     }
 

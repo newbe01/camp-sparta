@@ -52,12 +52,15 @@ public class Thread extends TimeStamp {
     @JoinColumn(name = "channel_id")
     private Channel channel;
 
+    @Builder.Default
     @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Comment> comments = new LinkedHashSet<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ThreadMention> mentions = new LinkedHashSet<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ThreadEmotion> emotions = new LinkedHashSet<>();
 

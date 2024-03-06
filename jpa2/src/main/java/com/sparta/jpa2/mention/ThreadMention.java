@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
+//@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
@@ -34,4 +34,13 @@ public class ThreadMention extends TimeStamp {
     @JoinColumn(name = "thread_id")
     Thread thread;
 
+    @Builder
+    public ThreadMention(User user, Thread thread) {
+        this.user = user;
+        this.thread = thread;
+        var id = new ThreadMentionId();
+        id.setUserId(user.getId());
+        id.setThreadId(thread.getId());
+        this.threadMentionId = id;
+    }
 }

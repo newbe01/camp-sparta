@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
+//@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
@@ -33,5 +33,11 @@ public class CommentMention extends TimeStamp {
     @MapsId("commentId")
     @JoinColumn(name = "comment_id")
     Comment comment;
+
+    @Builder
+    public CommentMention(User user, Comment comment) {
+        this.user = user;
+        this.comment = comment;
+    }
 
 }
