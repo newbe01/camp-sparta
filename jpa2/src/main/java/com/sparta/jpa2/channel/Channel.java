@@ -56,7 +56,7 @@ public class Channel {
         this.threads.add(thread);
     }
 
-    enum Type {
+    public enum Type {
         PUBLIC, PRIVATE,
     }
 }

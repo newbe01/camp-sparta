@@ -1,5 +1,6 @@
 package com.sparta.jpa2.user;
 
+import com.sparta.jpa2.mention.Mention;
 import com.sparta.jpa2.userChannel.UserChannel;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -46,4 +47,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     Set<UserChannel> userChannels = new LinkedHashSet<>();
 
+    @Builder.Default
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    Set<Mention> mentions = new LinkedHashSet<>();
 }
