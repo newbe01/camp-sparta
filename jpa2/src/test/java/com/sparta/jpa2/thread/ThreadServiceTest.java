@@ -10,6 +10,7 @@ import com.sparta.jpa2.mention.ThreadMention;
 import com.sparta.jpa2.user.User;
 import com.sparta.jpa2.user.UserRepository;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -69,11 +70,12 @@ class ThreadServiceTest {
 
     @Test
     void selectMentionedThreadListTest() {
+        // given
         var user = getTestUser("1", "1");
         var user2 = getTestUser("2", "2");
         var user3 = getTestUser("3", "3");
         var user4 = getTestUser("3", "4");
-        var newChannel = Channel.builder().name("testC").type(Type.PUBLIC).build();
+        var newChannel = Channel.builder().name("c1").type(Type.PUBLIC).build();
         var savedChannel = channelRepository.save(newChannel);
         var thread2 = getTestThread("", savedChannel, user
             , user2, "e2", user3, "c2", user4, "ce2");

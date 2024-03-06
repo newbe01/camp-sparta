@@ -66,16 +66,4 @@ public class Channel extends TimeStamp {
         return userChannel;
     }
 
-    @Override
-    @PrePersist
-    public void updateCreatedAt() {
-        super.updateCreatedAt();
-        super.updateModifiedAt();
-    }
-
-    @Override
-    @PreUpdate
-    public void updateModifiedAt() {
-        super.updateModifiedAt();
-    }
 }

@@ -17,26 +17,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public class TimeStamp {
 
-//    @CreatedDate
+    @CreatedDate
     private LocalDateTime createdAt;
 
-//    @LastModifiedDate
+    @LastModifiedDate
     private LocalDateTime modifiedAt;
-
-    @CreatedBy
-    @ManyToOne
-    private User createdBy;
-
-    @LastModifiedBy
-    @ManyToOne
-    private User modifiedBy;
-
-    public void updateCreatedAt() {
-        this.createdAt = LocalDateTime.now();
-    }
-
-    public void updateModifiedAt() {
-        this.modifiedAt = LocalDateTime.now();
-    }
 
 }
