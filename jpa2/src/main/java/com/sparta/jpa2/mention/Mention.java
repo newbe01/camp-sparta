@@ -1,6 +1,7 @@
 package com.sparta.jpa2.mention;
 
 import com.sparta.jpa2.channel.Channel;
+import com.sparta.jpa2.common.TimeStamp;
 import com.sparta.jpa2.thread.Thread;
 import com.sparta.jpa2.user.User;
 import jakarta.persistence.Column;
@@ -24,7 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-public class Mention {
+public class Mention extends TimeStamp {
 
     @EmbeddedId
     private MentionId mentionId;
