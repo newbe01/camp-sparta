@@ -50,19 +50,20 @@ public class Channel extends TimeStamp {
     @OneToMany(mappedBy = "channel", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UserChannel> userChannels = new LinkedHashSet<>();
 
-    public UserChannel joinUser(User user) {
-        UserChannel userChannel = UserChannel.builder().user(user).channel(this).build();
-        this.userChannels.add(userChannel);
-        user.getUserChannels().add(userChannel);
-        return userChannel;
-    }
-
-    public void addThreads(Thread thread) {
-        this.threads.add(thread);
-    }
 
     public enum Type {
         PUBLIC, PRIVATE,
+    }
+
+    public void addThread(Thread thread) {
+        this.threads.add(thread);
+    }
+
+    public UserChannel joinUser(User user) {
+        var userChannel = UserChannel.builder().user(user).channel(this).build();
+        this.userChannels.add(userChannel);
+        user.getUserChannels().add(userChannel);
+        return userChannel;
     }
 
     @Override

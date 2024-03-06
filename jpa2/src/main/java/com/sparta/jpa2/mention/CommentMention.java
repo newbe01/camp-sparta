@@ -1,19 +1,13 @@
 package com.sparta.jpa2.mention;
 
-import com.sparta.jpa2.channel.Channel;
+import com.sparta.jpa2.comment.Comment;
 import com.sparta.jpa2.common.TimeStamp;
-import com.sparta.jpa2.thread.Thread;
 import com.sparta.jpa2.user.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,19 +19,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-public class Mention extends TimeStamp {
+public class CommentMention extends TimeStamp {
 
     @EmbeddedId
-    private MentionId mentionId;
+    private CommentMentionId commentMentionId = new CommentMentionId();
 
     @ManyToOne
-    @MapsId("user_id")
+    @MapsId("userId")
     @JoinColumn(name = "user_id")
-    private User user;
+    User user;
 
     @ManyToOne
-    @MapsId("thread_id")
-    @JoinColumn(name = "thread_id")
-    private Thread thread;
+    @MapsId("commentId")
+    @JoinColumn(name = "comment_id")
+    Comment comment;
 
 }
